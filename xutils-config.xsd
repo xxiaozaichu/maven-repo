@@ -1,0 +1,84 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="beans">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="import" />
+				<xs:element ref="bean" />
+				<xs:element ref="array" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="import">
+		<xs:complexType mixed="true">
+			<xs:attribute name="name" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="bean">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="array" />
+					<xs:element ref="bean" />
+					<xs:element ref="arg" />
+				</xs:choice>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="set" />
+					<xs:element ref="call" />
+				</xs:choice>
+				<xs:element ref="output" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" />
+			<xs:attribute name="class" type="xs:token" />
+			<xs:attribute name="cache" type="xs:boolean" default="true" />
+			<xs:attribute name="eager" type="xs:boolean" default="false" />
+			<xs:attribute name="from" type="xs:string" />
+			<xs:attribute name="aop" type="xs:string" />
+			<xs:attribute name="destroy" type="xs:token" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="array">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="array" />
+				<xs:element ref="bean" />
+				<xs:element ref="arg" />
+			</xs:choice>
+			<xs:attribute name="id" type="xs:string" />
+			<xs:attribute name="class" type="xs:token" use="required" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="set">
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0">
+				<xs:element ref="bean" />
+				<xs:element ref="array" />
+			</xs:choice>
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="class" type="xs:token" />
+			<xs:attribute name="ref" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="arg">
+		<xs:complexType mixed="true">
+			<xs:attribute name="class" type="xs:token" />
+			<xs:attribute name="ref" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="call" type="caller" />
+	<xs:element name="output" type="caller" />
+	<xs:complexType name="caller">
+		<xs:sequence>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="array" />
+				<xs:element ref="bean" />
+				<xs:element ref="arg" />
+			</xs:choice>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="set" />
+				<xs:element ref="call" />
+			</xs:choice>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:token" use="required" />
+		<xs:attribute name="return" type="xs:token" />
+	</xs:complexType>
+</xs:schema>
