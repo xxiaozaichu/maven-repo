@@ -106,9 +106,12 @@
 					<archive>
 						<addMavenDescriptor>true</addMavenDescriptor>
 						<manifest>
-							<mainClass>zcu.xutil.util.Objutil</mainClass>
+							<mainClass>zcu.xutil.cfg.Main</mainClass>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 						</manifest>
+						<manifestEntries>
+						<Class-Path>.</Class-Path>
+						</manifestEntries>
 					</archive>
 				</configuration>
 			</plugin>
