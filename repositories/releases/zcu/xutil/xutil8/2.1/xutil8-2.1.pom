@@ -106,7 +106,7 @@
 					<archive>
 						<addMavenDescriptor>true</addMavenDescriptor>
 						<manifest>
-							<mainClass>zcu.xutil.cfg.Main</mainClass>
+							<mainClass>zcu.xutil.util.Objutil</mainClass>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 						</manifest>
 						<manifestEntries>
@@ -151,29 +151,9 @@
 			<artifactId>javax.mail</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
 			<groupId>javax.transaction</groupId>
 			<artifactId>jta</artifactId>
 			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>log4j-over-slf4j</artifactId>
-			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.jgroups</groupId>
@@ -262,6 +242,16 @@
 			<version>1.0</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 	<modules>
 	</modules>
@@ -324,33 +314,9 @@
 				<version>1.5.1</version>
 			</dependency>
 			<dependency>
-				<groupId>ch.qos.logback</groupId>
-				<artifactId>logback-core</artifactId>
-				<version>1.0.13</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>ch.qos.logback</groupId>
-				<artifactId>logback-classic</artifactId>
-				<version>1.0.13</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
 				<groupId>javax.transaction</groupId>
 				<artifactId>jta</artifactId>
 				<version>1.1</version>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>1.7.5</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>log4j-over-slf4j</artifactId>
-				<version>1.7.5</version>
-				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.jgroups</groupId>
@@ -401,6 +367,18 @@
 				<groupId>org.mybatis</groupId>
 				<artifactId>mybatis</artifactId>
 				<version>3.3.1</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-api</artifactId>
+				<version>2.11.0</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-core</artifactId>
+				<version>2.11.0</version>
 				<scope>provided</scope>
 			</dependency>
 		</dependencies>
