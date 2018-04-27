@@ -106,7 +106,7 @@
 					<archive>
 						<addMavenDescriptor>true</addMavenDescriptor>
 						<manifest>
-							<mainClass>zcu.xutil.util.Objutil</mainClass>
+							<mainClass>zcu.xutil.cfg.Main</mainClass>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 						</manifest>
 						<manifestEntries>
