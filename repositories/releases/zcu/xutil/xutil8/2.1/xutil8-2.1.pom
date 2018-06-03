@@ -167,7 +167,6 @@
 		<dependency>
 			<groupId>javax.transaction</groupId>
 			<artifactId>jta</artifactId>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jgroups</groupId>
@@ -281,6 +280,7 @@
 			<id>snapshots</id>
 			<name>Snapshots</name>
 			<url>file:${user.home}/git/maven-repo/repositories/snapshots</url>
+			<!--url>http://m2.yeepay.com/nexus/content/repositories/yp3g-subsystem-snapshot/</url-->
 			<layout>default</layout>
 		</snapshotRepository>
 	</distributionManagement>
@@ -326,6 +326,7 @@
 				<groupId>com.sun.mail</groupId>
 				<artifactId>javax.mail</artifactId>
 				<version>1.5.1</version>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>javax.transaction</groupId>
