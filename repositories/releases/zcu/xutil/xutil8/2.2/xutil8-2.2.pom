@@ -149,8 +149,9 @@
 							<includeScope>runtime</includeScope>
 							<!-- ${project.build.directory}为Maven内置变量，缺省为target -->
 							<outputDirectory>${project.build.directory}/lib</outputDirectory>
-							<!-- 表示是否不包含间接依赖的包 -->
+							<!-- 表示是否不包含间接依赖的包 
 							<excludeTransitive>true</excludeTransitive>
+							-->
 							<!-- 表示复制的jar文件去掉版本信息 -->
 							<stripVersion>false</stripVersion>
 						</configuration>
