@@ -76,32 +76,75 @@
 						</lifecycleMappingMetadata>
 					</configuration>
 				</plugin>
+
+				<plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.8</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>3.1.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.3.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.1.0</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>3.0.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.7.0</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+						<source>1.8</source>
+						<target>1.8</target>
+						<testCompilerArgument>-parameters</testCompilerArgument>
+						<compilerArgument>-parameters</compilerArgument>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.22.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>3.2.2</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.5.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.8.2</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
-				<configuration>
-					<encoding>UTF-8</encoding>
-					<source>1.8</source>
-					<target>1.8</target>
-					<testCompilerArgument>-parameters</testCompilerArgument>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.4</version>
 				<configuration>
 					<archive>
 						<addMavenDescriptor>true</addMavenDescriptor>
@@ -109,16 +152,11 @@
 							<mainClass>zcu.xutil.cfg.Main</mainClass>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 						</manifest>
-						<manifestEntries>
-							<Class-Path>.</Class-Path>
-						</manifestEntries>
 					</archive>
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>3.0.1</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -130,14 +168,22 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
 				<version>2.9</version>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.6</version>
+				<configuration>
+					<includeScope>runtime</includeScope>
+					<!-- ${project.build.directory}为Maven内置变量，缺省为target -->
+					<outputDirectory>${project.build.directory}/lib</outputDirectory>
+					<!-- 表示是否不包含间接依赖的包
+                    <excludeTransitive>true</excludeTransitive>
+                    -->
+					<!-- 表示复制的jar文件去掉版本信息 -->
+					<stripVersion>false</stripVersion>
+					
+				</configuration>
 				<executions>
 					<execution>
 						<id>copy-dependencies</id>
@@ -145,16 +191,7 @@
 						<goals>
 							<goal>copy-dependencies</goal>
 						</goals>
-						<configuration>
-							<includeScope>runtime</includeScope>
-							<!-- ${project.build.directory}为Maven内置变量，缺省为target -->
-							<outputDirectory>${project.build.directory}/lib</outputDirectory>
-							<!-- 表示是否不包含间接依赖的包 
-							<excludeTransitive>true</excludeTransitive>
-							-->
-							<!-- 表示复制的jar文件去掉版本信息 -->
-							<stripVersion>false</stripVersion>
-						</configuration>
+
 					</execution>
 				</executions>
 			</plugin>
